@@ -34,7 +34,6 @@ describe('API', () => {
                 .get('/tickets')
                 .expect(200)
                 .then(q => {
-                    console.log(q.body)
                         expect(q.body).to.be.an('array');
                         expect(q.body[0]._id.toString()).to.equal(baseData.tickets[0]._id.toString());
                         expect(q.body[0].name).to.equal(baseData.tickets[0].name);
@@ -42,5 +41,32 @@ describe('API', () => {
                 })
             });
     });
+    describe('GET /products', () => {
+        it('returns array of all products', () => {
+            return request(app)
+                .get('/products')
+                .expect(200)
+                .then(q => {
+                        expect(q.body).to.be.an('array');
+                        expect(q.body[0]._id.toString()).to.equal(baseData.products[0]._id.toString());
+                        expect(q.body[0].name).to.equal(baseData.products[0].name);
+                        expect(q.body[1].name).to.equal(baseData.products[1].name);
+                })
+            });
+    });
+    describe('POST /tickets', () => {
+        it('adds ticket to array', () => {
+            return request(app)
+                .post('/tickets')
+                .send({ticket:"banana"})
+                .expect(201)
+                .then(q => {
+                    console.log(q.body)
+                        expect(q.body).to.be.an('array')
+                        expect(q.body.length).to.equal(3);
+                })
+            });
+    });
+    
 
 });

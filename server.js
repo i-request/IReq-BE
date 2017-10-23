@@ -13,6 +13,8 @@ mongoose.connect(db, {useMongoClient: true})
 .then(() => console.log('successfully connected to', db))
 .catch(err => console.log('connection failed', err));
 
+app.use(bodyParser.json())
+
 app.get('/',function(req,res){
     res.send('hey yo what\'s up')
     })
@@ -33,7 +35,16 @@ app.get('/',function(req,res){
       res.send({msg: err});
     }
   });
-    
+///DELETE product/:id/ 
+///POST /product
+// PUT /product/:id?inStock=false
 
+///PUT ticket/:id?canceled=true
+///PUT ticket/:id?canceled=false
+///PUT ticket/:id?completed=true
+///PUT ticket/:id?completed=false
+///PUT ticket/:id?viewed=true
+
+// PUT /product/:id{key}={whatever}
 
 module.exports = app;

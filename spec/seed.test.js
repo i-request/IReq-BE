@@ -25,10 +25,6 @@ mongoose.connect(DBs.dev, function (err) {
     }
   });
 
-
-
-
-
   function addProduct(done) {
     var test1 = new model.Product(
       {
@@ -47,7 +43,7 @@ mongoose.connect(DBs.dev, function (err) {
   function addTicket(done) {
     var test1 = new model.Ticket(
       {
-        name: 'hey whats up'
+        name: 'this is also a test'
       }
     );
     test1.save(function (err) {

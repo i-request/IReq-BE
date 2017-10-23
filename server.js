@@ -8,15 +8,13 @@ var db = config.DB[process.env.NODE_ENV] || process.env.DB;
 mongoose.Promise = Promise;
 
 
-//routes needed (for now anyway) 
-//get all products
-//get all tickets
-//post ticket
-
+mongoose.connect(db, {useMongoClient: true})
+.then(() => console.log('successfully connected to', db))
+.catch(err => console.log('connection failed', err));
 
 app.get('/',function(req,res){
     res.send('hey yo what\'s up')
     })
-    
+
 
 module.exports = app;

@@ -1,0 +1,31 @@
+{
+  "name": "ireq-be",
+  "version": "1.0.0",
+  "description": "BE-server for FP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i-request/IReq-BE.git"
+  },
+  "keywords": [
+    "BE"
+  ],
+  "author": "irequest team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i-request/IReq-BE/issues"
+  },
+  "homepage": "https://github.com/i-request/IReq-BE#readme",
+  "dependencies": {
+    "async": "^2.5.0",
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.12.4",
+    "nodemon": "^1.12.1",
+    "supertest": "^3.0.0"
+  }
+}

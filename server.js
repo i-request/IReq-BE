@@ -6,7 +6,8 @@ var app = express();
 var config = require('./config');
 var db = config.DB[process.env.NODE_ENV] || process.env.DB;
 mongoose.Promise = Promise;
-
+var ticketsRouter = require('./routes/tickets')
+var productsRouter = require('./routes/products')
 
 mongoose.connect(db, {useMongoClient: true})
 .then(() => console.log('successfully connected to', db))
@@ -15,6 +16,24 @@ mongoose.connect(db, {useMongoClient: true})
 app.get('/',function(req,res){
     res.send('hey yo what\'s up')
     })
+
+ app.use('/products',productsRouter)
+ app.use('/tickets',ticketsRouter) 
+ app.use('/*', (req, res, next) => {
+    res.status(404);
+    res.send({msg: 'Page not found'});
+  })
+  app.use((err, req, res, next) => {
+    if(err.type === 'CastError') {
+      res.status(404);
+      res.send({msg: 'Page not found'});
+    }
+    else {
+      res.status(500);
+      res.send({msg: err});
+    }
+  });
+    
 
 
 module.exports = app;

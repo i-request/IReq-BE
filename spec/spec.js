@@ -8,7 +8,6 @@ process.env.NODE_ENV = 'test';
 
 
 
-
 describe('API', () => {
     let baseData;
     beforeEach(() => {
@@ -26,6 +25,20 @@ describe('API', () => {
                 .expect(200)
                 .then(q => {
                         expect(q.text).to.be.a('string');
+                })
+            });
+    });
+    describe('GET /tickets', () => {
+        it('returns array of all tickets', () => {
+            return request(app)
+                .get('/tickets')
+                .expect(200)
+                .then(q => {
+                    console.log(q.body)
+                        expect(q.body).to.be.an('array');
+                        expect(q.body[0]._id.toString()).to.equal(baseData.tickets[0]._id.toString());
+                        expect(q.body[0].name).to.equal(baseData.tickets[0].name);
+                        expect(q.body[1].name).to.equal(baseData.tickets[1].name);
                 })
             });
     });

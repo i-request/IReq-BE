@@ -1,11 +1,14 @@
 # IReq-BE
 Back-end
 
+to use this server:
+
+
 list of routes:
 
-GET '/' returns 'hey whats up'
-GET '/products' returns an array of all the products
-GET '/tickets' returns an array of all the tickets
+GET '/' returns 'hey whats up' /n
+GET '/products' returns an array of all the products /n
+GET '/tickets' returns an array of all the tickets /n
 POST '/tickets' add a given ticket object to the database in the format of:
                {     delivery: BOOLEAN,
                     order_content: [ ARRAY OF OBJECTS  ],

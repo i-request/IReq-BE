@@ -1,41 +1,56 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var autoIncrement = require("mongodb-autoincrement");
+var optionalOptions = {
+  collection: 'tickets',
+  field: 'order_num',
+  step: 1
+}
+
+
+const counter = function () {
+  let c = 0
+return function(){
+  c++
+  return c
+  
+}
+
+}
+
 
 
 var ProductSchema = new Schema({
-    type: String,   
-    name: String,
-    extras:[[String]],
-    price : Number,
-    inStock:Boolean,
-    allergens:[[String]], 
+  type: String,
+  name: String,
+  extras: [[String]],
+  price: Number,
+  inStock: Boolean,
+  allergens: [[String]],
 });
 
 var TicketSchema = new Schema(
-  { order_num: Number,
+  {
+    order_num: {
+      type: Number
+    },
     isComplete: Boolean,
     isViewed: Boolean,
-    isCanceled:Boolean,
-    delivery:Boolean,
+    isCanceled: Boolean,
+    delivery: Boolean,
     order_content: [],
     additional_instructions: String,
-    user_details :[]
+    user_details: []
   });
- var Counter = new Schema (
-   {
-     name:String,
-     seq:Number
-   }
- ) 
+
 
 
 const Ticket = mongoose.model('Ticket', TicketSchema)
 const Product = mongoose.model('Product', ProductSchema)
-const Count = mongoose.model('Count', Counter)
+
 module.exports = {
   Ticket,
   Product,
-  Count
 
 }
 

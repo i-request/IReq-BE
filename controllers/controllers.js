@@ -2,7 +2,14 @@ const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 const { Ticket, Product } = require('../models/models');
 
+var obj = {c:0}
 
+function count(){
+    obj.c = obj.c + 1
+    return obj.c
+    
+  }
+// potentially change this to a Math.random()
 function getAllTickets(req, res, next) {
     Ticket.find()
         .then(tickets => {
@@ -24,8 +31,9 @@ function getAllProducts(req, res, next) {
 }
 
 function addTicket(req, res, next) {
+    let n = count()
     let tix = new Ticket(
-        { order_num: 777,
+        { order_num: n,
             isComplete: false,
             isViewed: false,
             isCanceled:false,
@@ -69,7 +77,7 @@ function addProduct(req, res, next) {
     );
     pro.save()
         .then(() => {
-            console.log('got here')
+         
             return Product.find()
         })
         .then(products => {
@@ -101,15 +109,15 @@ function ChangeProductStock(req,res,next){
 
 function ChangeTicketProp(req,res,next){
     var key = Object.keys(req.query)[0]
-    console.log(key)
+   
     var boo = ''
     if(req.query[key] === 'true'){boo = true}
     if(req.query[key] === 'false'){boo = false}
     var obj = {[key]:boo}
-    console.log(obj)
+    
     return Ticket.findByIdAndUpdate({_id:req.params._id},{$set:obj})
     .then(() => {
-        console.log
+       
         return Ticket.findById(req.params._id);
     })
     .then(t => {

@@ -1,10 +1,11 @@
-const { Ticket,Product } = require('../models/models');
+const { Ticket,Product,Count } = require('../models/models');
 const savedData = {};
+
 
 
 function saveTickets() {
   const tickets = [
-    { order_num: 1,
+    { order_num:1,
       isComplete: false,
       isViewed: false,
       isCanceled:false,
@@ -37,9 +38,53 @@ function saveTickets() {
         user_company : "co-op", 
         user_floor : 3
       }]
+    },
+    { order_num:2,
+      isComplete: false,
+      isViewed: false,
+      isCanceled:false,
+      delivery:false,
+      order_content: [
+        {
+          _id: '98uygyy7895rertyu',
+          type: "food",
+          name: "standard hot dog",
+          extras: ['cheese'],
+          price: 500,
+          inStock: true,
+          allergens: ['meat', 'dairy', 'egg']
+        },
+        {
+          _id: '876t5rfty78jh',
+          type: "food",
+          name: "ham and cheese sandwich",
+          extras: [],
+          price: 550,
+          inStock: true,
+          allergens: ['meat', 'dairy', 'egg']
+        }],
+      additional_instructions: '',
+      user_details :[{
+        id : 'e3e456y7uhtgre3456',
+        user_name: "Jonathan Ward",
+        email : "jonathan@forwardmarketingonline.co.uk", 
+        phone_num : "01617991075", 
+        user_company : "co-op", 
+        user_floor : 3
+      }]
     }
   ].map(t => new Ticket(t).save());
   return Promise.all(tickets);
+}
+
+function addCount()
+{
+const c =[{
+  name:'counter',
+  seq:0
+}
+].map(d=> new Count(d).save())
+return Promise.all(c)
 }
 
 function saveProducts() {
@@ -73,9 +118,8 @@ function saveTestData() {
     .then((products) => {
       savedData.products = products;
       return savedData;
-    });
+    })
 }
 
+
 module.exports = saveTestData;
-
-

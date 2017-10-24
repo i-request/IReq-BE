@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test mocha spec/spec.js",
-    "start":"nodemon index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
     "express": "^4.16.2",
+    "mongodb-autoincrement": "^1.0.1",
     "mongoose": "^4.12.4",
     "nodemon": "^1.12.1",
     "supertest": "^3.0.0"

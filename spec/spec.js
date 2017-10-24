@@ -79,8 +79,9 @@ describe('API', () => {
                              })
                 .expect(201)
                 .then(q => {
+                    
                         expect(q.body).to.be.an('array')
-                        expect(q.body.length).to.equal(2);
+                        expect(q.body.length).to.equal(3);
                 })
             });
     });

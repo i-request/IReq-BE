@@ -24,14 +24,27 @@ function getAllProducts(req, res, next) {
 }
 
 function addTicket(req, res, next) {
-    console.log('called')
-    console.log(req.body)
-    let tix = new Ticket({
-        name: req.body.ticket
-    });
+    let tix = new Ticket(
+        { order_num: 777,
+            isComplete: false,
+            isViewed: false,
+            isCanceled:false,
+            delivery: req.body.delivery,
+            order_content: req.body.order_content,
+            additional_instructions: req.body.message,
+            user_details :[{
+              id : 'e3e456y7uhtgre3456',
+              user_name: "Jonathan Ward",
+              email : "jonathan@forwardmarketingonline.co.uk", 
+              phone_num : "01617991075", 
+              user_company : "co-op", 
+              user_floor : 3
+            }]
+          }
+    );
     tix.save()
         .then(() => {
-            console.log('got here')
+           
             return Ticket.find()
         })
         .then(tickets => {
@@ -42,8 +55,53 @@ function addTicket(req, res, next) {
 }
 
 
+function addProduct(req, res, next) {
+    
+    let pro = new Product(
+        {
+            type: req.body.type,   
+            name: req.body.name,
+            extras:req.body.extras,
+            price : req.body.price,
+            inStock:req.body.inStock,
+            allergens:req.body.allergens, 
+        }
+    );
+    pro.save()
+        .then(() => {
+            console.log('got here')
+            return Product.find()
+        })
+        .then(products => {
+            res.status(201);
+            res.send(products);
+        })
+        .catch(err => next(err));
+}
+
+
+function ChangeProductStock(req,res,next){
+    Product.findByIdAndUpdate({_id:req.params._id},{$set:{inStock:req.query.inStock}})
+    .then(() => {
+        return Product.findById(req.params._id);
+    })
+    .then(p => {
+        res.status(201);
+        res.send(p);
+    })
+    .catch(err => {
+        if(err.name === 'CastError'){
+        next({err: err, type: 'CastError'})    
+        }
+        else {
+            next(err)
+        }
+    });
+}
 
 
 
 
-module.exports = { getAllTickets, getAllProducts, addTicket }
+
+
+module.exports = { getAllTickets, getAllProducts, addTicket, addProduct,ChangeProductStock }

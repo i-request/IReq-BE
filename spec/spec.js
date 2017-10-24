@@ -19,7 +19,7 @@ describe('API', () => {
             .catch(console.error);
     })
     describe('GET /', () => {
-        it('returns an array of objects', () => {
+        it('returns hey whats up', () => {
             return request(app)
                 .get('/')
                 .expect(200)
@@ -110,19 +110,30 @@ describe('PUT /products/:_id?inStock=false', () => {
                 .put(`/products/${baseData.products[0]._id}?inStock=false`)
                 .expect(201)
                 .then(q => {
-                    console.log(baseData.products)
-                    console.log(q.body)
+
                         expect(q.body.inStock).to.equal(false)
                 })
             });
     });
-
-// PUT /product/:_id?inStock=false
-///PUT ticket/:_id?canceled=true
-///PUT ticket/:_id?canceled=false
-///PUT ticket/:_id?completed=true
-///PUT ticket/:_id?completed=false
-///PUT ticket/:_id?viewed=true
-    
-
+describe('PUT /tickets/:_id?isViewed=true', () => {
+        it('updates tickets to show that it has been viewed', () => {
+            return request(app)
+                .put(`/tickets/${baseData.tickets[0]._id}?isViewed=true`)
+                .expect(201)
+                .then(q => {
+                        expect(q.body.isViewed).to.equal(true)
+                })
+            });
+    }); 
+describe('PUT /tickets/:_id?isComplete=true', () => {
+        it('updates tickets to show that it has been viewed', () => {
+            return request(app)
+                .put(`/tickets/${baseData.tickets[0]._id}?isComplete=true`)
+                .expect(201)
+                .then(q => {
+                   
+                        expect(q.body.isComplete).to.equal(true)
+                })
+            });
+    });  
 });

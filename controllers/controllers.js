@@ -99,9 +99,36 @@ function ChangeProductStock(req,res,next){
     });
 }
 
+function ChangeTicketProp(req,res,next){
+    var key = Object.keys(req.query)[0]
+    console.log(key)
+    var boo = ''
+    if(req.query[key] === 'true'){boo = true}
+    if(req.query[key] === 'false'){boo = false}
+    var obj = {[key]:boo}
+    console.log(obj)
+    return Ticket.findByIdAndUpdate({_id:req.params._id},{$set:obj})
+    .then(() => {
+        console.log
+        return Ticket.findById(req.params._id);
+    })
+    .then(t => {
+        res.status(201);
+        res.send(t);
+    })
+    .catch(err => {
+        if(err.name === 'CastError'){
+        next({err: err, type: 'CastError'})    
+        }
+        else {
+            next(err)
+        }
+    });
+}
 
 
 
 
 
-module.exports = { getAllTickets, getAllProducts, addTicket, addProduct,ChangeProductStock }
+
+module.exports = { getAllTickets, getAllProducts, addTicket, addProduct,ChangeProductStock, ChangeTicketProp}

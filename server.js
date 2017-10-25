@@ -8,12 +8,15 @@ var db = config.DB[process.env.NODE_ENV] || process.env.DB;
 mongoose.Promise = Promise;
 var ticketsRouter = require('./routes/tickets')
 var productsRouter = require('./routes/products')
+var cors = require('cors')
 
 mongoose.connect(db, {useMongoClient: true})
 .then(() => console.log('successfully connected to', db))
 .catch(err => console.log('connection failed', err));
 
 app.use(bodyParser.json())
+
+app.use(cors())
 
 app.get('/',function(req,res){
     res.send('hey yo what\'s up')

@@ -9,7 +9,8 @@ mongoose.connect(DBs.dev, function (err) {
       mongoose.connection.db.dropDatabase();
       async.waterfall([
         addProduct,
-        addTicket,
+        addTicket1,
+        addTicket2
       ], function (err) {
         if (err) {
           console.log(JSON.stringify(err));
@@ -44,9 +45,9 @@ mongoose.connect(DBs.dev, function (err) {
     });
   }
 
-  function addTicket(done) {
+  function addTicket1(done) {
     var test1 = new model.Ticket(
-      tixT
+      tixT1
     );
     test1.save(function (err) {
       if (err) {
@@ -56,15 +57,27 @@ mongoose.connect(DBs.dev, function (err) {
     });
   }
 
-  var tixT = 
-    { order_num:1,
+  function addTicket2(done) {
+    var test1 = new model.Ticket(
+      tixT2
+    );
+    test1.save(function (err) {
+      if (err) {
+        return done(err);
+      }
+      return done();
+    });
+  }
+
+  var tixT1 = 
+    { order_num:2,
       isComplete: false,
       isViewed: false,
       isCanceled:false,
       delivery:false,
       order_content: [
         {
-          _id: '98uygyu7y6t5rertyu',
+          _id: '1',
           type: "food",
           name: "super hot dog",
           extras: ['cheese'],
@@ -73,7 +86,7 @@ mongoose.connect(DBs.dev, function (err) {
           allergens: ['meat', 'dairy', 'egg']
         },
         {
-          _id: '876t5rfty78jh',
+          _id: '2',
           type: "food",
           name: "ham and cheese panini",
           extras: [],
@@ -83,7 +96,34 @@ mongoose.connect(DBs.dev, function (err) {
         }],
       additional_instructions: 'none',
       user_details :[{
-        id : 'e3e456y7uhtgre3456',
+        id : 'uhtgre3456',
+        user_name: "Jonathan Ward",
+        email : "jonathan@forwardmarketingonline.co.uk", 
+        phone_num : "01617991075", 
+        user_company : "co-op", 
+        user_floor : 3
+      }]
+    }
+
+    var tixT2 = 
+    { order_num:1,
+      isComplete: false,
+      isViewed: false,
+      isCanceled:false,
+      delivery:false,
+      order_content: [
+        {
+          _id: '4',
+          type: "food",
+          name: "standard hot dog",
+          extras: ['cheese'],
+          price: 700,
+          inStock: true,
+          allergens: ['meat', 'dairy', 'egg']
+        }],
+      additional_instructions: 'no bun',
+      user_details :[{
+        id : '5',
         user_name: "Jonathan Ward",
         email : "jonathan@forwardmarketingonline.co.uk", 
         phone_num : "01617991075", 

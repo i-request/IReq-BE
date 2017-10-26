@@ -8,16 +8,6 @@ var optionalOptions = {
 }
 
 
-const counter = function () {
-  let c = 0
-return function(){
-  c++
-  return c
-  
-}
-
-}
-
 
 
 var ProductSchema = new Schema({
@@ -25,6 +15,7 @@ var ProductSchema = new Schema({
   name: String,
   extras: [[String]],
   price: Number,
+  description:String,
   inStock: Boolean,
   allergens: [[String]],
 });

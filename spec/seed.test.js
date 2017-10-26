@@ -33,6 +33,7 @@ mongoose.connect(DBs.dev, function (err) {
         name: 'bacon sandwich',
         extras: ['tomato sauce'],
         price: 410,
+        description:'well it is a bacon sandwich what do you expect',
         inStock: true,
         allergens: ['meat'],
       }

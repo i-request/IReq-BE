@@ -5,7 +5,7 @@ module.exports = {
       dev: 'mongodb://request:banana@ds042417.mlab.com:42417/i-req-mongod'
     },
     PORT: {
-      test: 9008,
+      test: 3002,
       dev: 9007
     }
   };

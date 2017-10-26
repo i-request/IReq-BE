@@ -70,6 +70,7 @@ function addProduct(req, res, next) {
             type: req.body.type,   
             name: req.body.name,
             extras:req.body.extras,
+            description:req.body.description,
             price : req.body.price,
             inStock:req.body.inStock,
             allergens:req.body.allergens, 

@@ -92,15 +92,17 @@ describe('API', () => {
                 .post('/products')
                 .send({
                     type: 'drink',   
-                    name: 'large coke',
+                    name: 'standard coke',
                     extras:[],
-                    price : 490,
+                    price : 280,
+                    description:'again it is just a coke',
                     inStock:true,
                     allergens:[], 
                 })
                 .expect(201)
                 .then(q => {
                         expect(q.body).to.be.an('array')
+                        console.log(q.body)
                         expect(q.body.length).to.equal(3);
                 })
             });

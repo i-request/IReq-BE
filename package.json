@@ -29,6 +29,7 @@
     "mongodb-autoincrement": "^1.0.1",
     "mongoose": "^4.12.4",
     "nodemon": "^1.12.1",
+    "stripe": "^5.2.0",
     "supertest": "^3.0.0"
   }
 }

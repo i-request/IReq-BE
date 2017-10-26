@@ -9,6 +9,10 @@ mongoose.Promise = Promise;
 var ticketsRouter = require('./routes/tickets')
 var productsRouter = require('./routes/products')
 var cors = require('cors')
+var stripe = require('stripe')('STRIPE_SECRET_KEY');
+
+
+
 
 mongoose.connect(db, {useMongoClient: true})
 .then(() => console.log('successfully connected to', db))
@@ -21,6 +25,52 @@ app.use(cors())
 app.get('/',function(req,res){
     res.send('hey yo what\'s up')
     })
+app.get('/payment', (req, res) => {
+      res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
+    });
+app.post('/payment', (req, res) => {
+  let description=req.boyd.description
+  let amount=req.body.amount
+  let source=req.body.source
+  let currency=req.body.currency
+  var toCharge = {
+    description,
+    amount,
+    source,
+    currency
+  }
+  var charge = stripe.charges.create(toCharge, function(err, charge){
+    if(err && err.type === 'StripeCardError'){
+      console.log('card declined')
+      res.send({
+        message:'card declined',
+        bool:false
+    })
+    }
+    else{
+      console.log('payment receieved')
+      res.send({
+        message:'payment recieved',
+        bool:true
+      })
+    }
+  });
+})
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
  app.use('/products',productsRouter)
  app.use('/tickets',ticketsRouter) 
@@ -42,12 +92,21 @@ app.get('/',function(req,res){
 ///POST /product
 // PUT /product/:id?inStock=false
 
-///PUT ticket/:id?canceled=true
-///PUT ticket/:id?canceled=false
-///PUT ticket/:id?completed=true
-///PUT ticket/:id?completed=false
-///PUT ticket/:id?viewed=true
-
-// PUT /product/:id{key}={whatever}
 
 module.exports = app;
+
+
+
+
+
+const paymentApi = app => {
+  app.get('/', (req, res) => {
+    res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
+  });
+
+  app.post('/', (req, res) => {
+    stripe.charges.create(req.body, postStripeCharge(res));
+  });
+
+  return app;
+};

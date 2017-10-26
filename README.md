@@ -16,6 +16,10 @@ list of routes:
 
 GET '/' returns 'hey whats up' 
 
+GET '/payment' returns { message: 'Hello Stripe checkout server!', timestamp:{current time}}
+
+POST '/payment' handles a stripe payemnt returns { message: {result string}, bool:{true/false depending on successful payment}}
+
 GET '/products' returns an array of all the products 
 
 GET '/tickets' returns an array of all the tickets 

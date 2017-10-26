@@ -35,6 +35,7 @@ POST '/products' adds a given product object to the database in the format of:
                     name: STRING,
                     extras:ARRAY,
                     price : NUMBER,
+                    description:STRING
                     inStock:BOOLEAN,
                     allergens:ARRAY, 
                 }

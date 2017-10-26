@@ -89,8 +89,14 @@ function addProduct(req, res, next) {
 }
 
 
-function ChangeProductStock(req,res,next){
-    Product.findByIdAndUpdate({_id:req.params._id},{$set:{inStock:req.query.inStock}})
+function ChangeProductProp(req,res,next){
+    var key = Object.keys(req.query)[0]
+    var boo = ''
+    if(req.query[key] === 'true'){boo = true}
+   else if(req.query[key] === 'false'){boo = false}
+   else {boo = req.query[key]}
+    var obj = {[key]:boo}
+   return Product.findByIdAndUpdate({_id:req.params._id},{$set:obj})
     .then(() => {
         return Product.findById(req.params._id);
     })
@@ -107,6 +113,7 @@ function ChangeProductStock(req,res,next){
         }
     });
 }
+
 
 function ChangeTicketProp(req,res,next){
     var key = Object.keys(req.query)[0]
@@ -140,4 +147,4 @@ function ChangeTicketProp(req,res,next){
 
 
 
-module.exports = { getAllTickets, getAllProducts, addTicket, addProduct,ChangeProductStock, ChangeTicketProp}
+module.exports = { getAllTickets, getAllProducts, addTicket, addProduct,ChangeProductProp, ChangeTicketProp}

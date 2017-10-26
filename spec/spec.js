@@ -118,6 +118,17 @@ describe('PUT /products/:_id?inStock=false', () => {
                 })
             });
     });
+    describe('PUT /products/:_id?price=800', () => {
+        it('sets a product to a new price', () => {
+            return request(app)
+                .put(`/products/${baseData.products[0]._id}?price=800`)
+                .expect(201)
+                .then(q => {
+
+                        expect(q.body.price).to.equal(800)
+                })
+            });
+    });
 describe('PUT /tickets/:_id?isViewed=true', () => {
         it('updates tickets to show that it has been viewed', () => {
             return request(app)

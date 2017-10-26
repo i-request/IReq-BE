@@ -40,7 +40,11 @@ POST '/products' adds a given product object to the database in the format of:
                     allergens:ARRAY, 
                 }
 
- PUT '/products/:_id?inStock={true/false}' able to alter the stock of a product by _id by adding the query params key of 'inStock' followed by the desired boolean
+
+                ******************UPDATE******************* 
+     the product route now works the same as the tickets one as in it can update any property on the product
+
+ PUT '/products/:_id?{key}={true/false}' able to alter the stock of a product by _id by adding the query params key of whatever you choose followed by the desired boolean
 
  
  PUT '/tickets/:_id?{key}={true/false}' able to alter the ticket by _id adding the query params key of either 'isComplete', 'isViewed','isCanceled' followed by the desired boolean               

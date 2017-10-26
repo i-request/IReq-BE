@@ -2,133 +2,116 @@ var mongoose = require('mongoose')
 var DBs = require('../config.js').DB;
 var model = require('../models/models.js')
 var async = require('async')
-
+var testProducts = require('./products')
+mongoose.Promise = Promise
 
 mongoose.connect(DBs.dev, function (err) {
-    if (!err) {
-      mongoose.connection.db.dropDatabase();
-      async.waterfall([
-        addProduct,
-        addTicket1,
-        addTicket2
-      ], function (err) {
-        if (err) {
-          console.log(JSON.stringify(err));
-          process.exit();
-        }
-      
+      if (!err) {
+        mongoose.connection.dropDatabase()
+        .then(saveTestData)
+        .then(data => {
+           console.log('done')
+           process.exit();
+        })
+        .catch(console.error);
+      } else {
+  
+        console.log(JSON.stringify(err));
         process.exit();
-      });
-    } else {
-
-      console.log(JSON.stringify(err));
-      process.exit();
-    }
-  });
-
-  function addProduct(done) {
-    var test1 = new model.Product(
-      {
-        type: 'food',
-        name: 'bacon sandwich',
-        extras: ['tomato sauce'],
-        price: 410,
-        description:'well it is a bacon sandwich what do you expect',
-        inStock: true,
-        allergens: ['meat'],
       }
-    );
-    test1.save(function (err) {
-      if (err) {
-        return done(err);
-      }
-      return done();
     });
-  }
 
-  function addTicket1(done) {
-    var test1 = new model.Ticket(
-      tixT1
-    );
-    test1.save(function (err) {
-      if (err) {
-        return done(err);
-      }
-      return done();
-    });
-  }
 
-  function addTicket2(done) {
-    var test1 = new model.Ticket(
-      tixT2
-    );
-    test1.save(function (err) {
-      if (err) {
-        return done(err);
-      }
-      return done();
-    });
-  }
 
-  var tixT1 = 
-    { order_num:2,
-      isComplete: false,
-      isViewed: false,
-      isCanceled:false,
-      delivery:false,
-      order_content: [
-        {
-          _id: '1',
-          type: "food",
-          name: "super hot dog",
-          extras: ['cheese'],
-          price: 700,
-          inStock: true,
-          allergens: ['meat', 'dairy', 'egg']
+    function saveTickets() {
+      const tickets = [
+        { order_num:1,
+          isComplete: false,
+          isViewed: false,
+          isCanceled:false,
+          delivery:false,
+          order_content: [
+            {
+              _id: '98uygyu7y6t5rertyu',
+              type: "food",
+              name: "super hot dog",
+              extras: ['cheese'],
+              price: 700,
+              inStock: true,
+              allergens: ['meat', 'dairy', 'egg']
+            },
+            {
+              _id: '876t5rfty78jh',
+              type: "food",
+              name: "ham and cheese panini",
+              extras: [],
+              price: 550,
+              inStock: true,
+              allergens: ['meat', 'dairy', 'egg']
+            }],
+          additional_instructions: '',
+          user_details :[{
+            id : 'e3e456y7uhtgre3456',
+            user_name: "Jonathan Ward",
+            email : "jonathan@forwardmarketingonline.co.uk", 
+            phone_num : "01617991075", 
+            user_company : "co-op", 
+            user_floor : 3
+          }]
         },
-        {
-          _id: '2',
-          type: "food",
-          name: "ham and cheese panini",
-          extras: [],
-          price: 550,
-          inStock: true,
-          allergens: ['meat', 'dairy', 'egg']
-        }],
-      additional_instructions: 'none',
-      user_details :[{
-        id : 'uhtgre3456',
-        user_name: "Jonathan Ward",
-        email : "jonathan@forwardmarketingonline.co.uk", 
-        phone_num : "01617991075", 
-        user_company : "co-op", 
-        user_floor : 3
-      }]
+        { order_num:2,
+          isComplete: false,
+          isViewed: false,
+          isCanceled:false,
+          delivery:false,
+          order_content: [
+            {
+              _id: '98uygyy7895rertyu',
+              type: "food",
+              name: "standard hot dog",
+              extras: ['cheese'],
+              description:'hey yo was up',
+              price: 500,
+              inStock: true,
+              allergens: ['meat', 'dairy', 'egg']
+            },
+            {
+              _id: '876t5rfty78jh',
+              type: "food",
+              name: "ham and cheese sandwich",
+              description:'hey',
+              extras: [],
+              price: 550,
+              inStock: true,
+              allergens: ['meat', 'dairy', 'egg']
+            }],
+          additional_instructions: '',
+          user_details :[{
+            id : 'e3e456y7uhtgre3456',
+            user_name: "Jonathan Ward",
+            email : "jonathan@forwardmarketingonline.co.uk", 
+            phone_num : "01617991075", 
+            user_company : "co-op", 
+            user_floor : 3
+          }]
+        }
+      ].map(t => new model.Ticket(t).save());
+      return Promise.all(tickets);
     }
-
-    var tixT2 = 
-    { order_num:1,
-      isComplete: false,
-      isViewed: false,
-      isCanceled:false,
-      delivery:false,
-      order_content: [
-        {
-          _id: '4',
-          type: "food",
-          name: "standard hot dog",
-          extras: ['cheese'],
-          price: 700,
-          inStock: true,
-          allergens: ['meat', 'dairy', 'egg']
-        }],
-      additional_instructions: 'no bun',
-      user_details :[{
-        id : '5',
-        user_name: "Jonathan Ward",
-        email : "jonathan@forwardmarketingonline.co.uk", 
-        phone_num : "01617991075", 
-        user_company : "co-op", 
-        user_floor : 3
-      }]
+    
+        
+    function saveProducts() {
+        const products = testProducts.map(p => new model.Product(p).save());
+      return Promise.all(products);
+    }
+    
+    function saveTestData() {
+      return saveTickets()
+         .then(tickets => {
+          return saveProducts();
+        })
+        .then((products) => {
+       
+          return products
+        })
     }

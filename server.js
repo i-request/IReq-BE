@@ -87,39 +87,9 @@ app.post("/charge", (req, res) => {
   });
 });
 
-    
+  
 
 
-
-
-
-
-
-
-
-
-
-
-
- app.use('/products',productsRouter)
- app.use('/tickets',ticketsRouter) 
- app.use('/*', (req, res, next) => {
-    res.status(404);
-    res.send({msg: 'Page not found'});
-  })
-  app.use((err, req, res, next) => {
-    if(err.type === 'CastError') {
-      res.status(404);
-      res.send({msg: 'Page not found'});
-    }
-    else {
-      res.status(500);
-      res.send({msg: err});
-    }
-  });
-///DELETE product/:id/ 
-///POST /product
-// PUT /product/:id?inStock=false
 
 
 module.exports = app;
@@ -127,15 +97,3 @@ module.exports = app;
 
 
 
-
-const paymentApi = app => {
-  app.get('/', (req, res) => {
-    res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
-  });
-
-  app.post('/', (req, res) => {
-    stripe.charges.create(req.body, postStripeCharge(res));
-  });
-
-  return app;
-};

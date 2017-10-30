@@ -32,6 +32,44 @@ function getViewTickets(req, res, next) {
 
 }
 
+function getNotCompletedTickets(req, res, next) {
+    Ticket.find()
+        .then(tickets => {
+            var Vt = tickets.filter(function(item){
+                return item.isComplete === false
+            })
+            res.status(200)
+            res.send(Vt)
+        })
+        .catch((err) => next(err))
+
+}
+
+function getCanceledTickets(req, res, next) {
+    Ticket.find()
+        .then(tickets => {
+            var Vt = tickets.filter(function(item){
+                return item.isCanceled === true
+            })
+            res.status(200)
+            res.send(Vt)
+        })
+        .catch((err) => next(err))
+
+}
+function getArchTickets(req, res, next) {
+    Ticket.find()
+        .then(tickets => {
+            var Vt = tickets.filter(function(item){
+                return item.isViewed === true && item.isComplete === true
+            })
+            res.status(200)
+            res.send(Vt)
+        })
+        .catch((err) => next(err))
+
+}
+
 function getAllProducts(req, res, next) {
     Product.find()
         .then(products => {
@@ -159,4 +197,4 @@ function ChangeTicketProp(req,res,next){
 
 
 
-module.exports = { getAllTickets, getViewTickets, getAllProducts, addTicket, addProduct,ChangeProductProp, ChangeTicketProp}
+module.exports = { getAllTickets, getCanceledTickets, getArchTickets, getViewTickets, getNotCompletedTickets, getAllProducts, addTicket, addProduct,ChangeProductProp, ChangeTicketProp}

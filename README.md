@@ -26,6 +26,13 @@ GET '/tickets' returns an array of all the tickets
 
 GET '/tickets/viewed' returns an array of all the tickets that have been viewed
 
+GET '/tickets/done' returns an array of all the tickets that have NOW been completed
+
+GET '/tickets/cancled' returns an array of all the tickets that have been cancled
+
+GET '/tickets/archieved' returns an array of all the tickets that have been viewed
+
+
 POST '/tickets' add a given ticket object to the database in the format of:
                
                {     delivery: BOOLEAN,

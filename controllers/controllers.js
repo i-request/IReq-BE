@@ -19,6 +19,18 @@ function getAllTickets(req, res, next) {
         .catch((err) => next(err))
 
 }
+function getViewTickets(req, res, next) {
+    Ticket.find()
+        .then(tickets => {
+            var Vt = tickets.filter(function(item){
+                return item.isViewed === true
+            })
+            res.status(200)
+            res.send(Vt)
+        })
+        .catch((err) => next(err))
+
+}
 
 function getAllProducts(req, res, next) {
     Product.find()
@@ -147,4 +159,4 @@ function ChangeTicketProp(req,res,next){
 
 
 
-module.exports = { getAllTickets, getAllProducts, addTicket, addProduct,ChangeProductProp, ChangeTicketProp}
+module.exports = { getAllTickets, getViewTickets, getAllProducts, addTicket, addProduct,ChangeProductProp, ChangeTicketProp}

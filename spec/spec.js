@@ -75,13 +75,13 @@ describe('API', () => {
                         inStock: true,
                         allergens: []
                       }],
-                    message: '',
+                    message: 'hey whats up',
                              })
                 .expect(201)
                 .then(q => {
-                    
-                        expect(q.body).to.be.an('array')
-                        expect(q.body.length).to.equal(3);
+                    console.log(q.body)
+                        expect(q.body).to.be.an('object')
+                        expect(q.body.additional_instructions).to.equal('hey whats up');
                 })
             });
     });
@@ -102,7 +102,6 @@ describe('API', () => {
                 .expect(201)
                 .then(q => {
                         expect(q.body).to.be.an('array')
-                        console.log(q.body)
                         expect(q.body.length).to.equal(3);
                 })
             });

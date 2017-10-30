@@ -1,8 +1,9 @@
 const router = require('express').Router();
-const {getAllTickets, addTicket, ChangeTicketProp} = require('../controllers/controllers')
+const {getAllTickets, addTicket, ChangeTicketProp, getViewTickets} = require('../controllers/controllers')
 
 router.get('/', getAllTickets)
-router.post('/', addTicket)
+router.get('/viewed', getViewTickets)
+// router.post('/', addTicket)
 router.put('/:_id',ChangeTicketProp)
 
 module.exports = router;

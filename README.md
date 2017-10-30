@@ -24,6 +24,8 @@ GET '/products' returns an array of all the products
 
 GET '/tickets' returns an array of all the tickets 
 
+GET '/tickets/viewed' returns an array of all the tickets that have been viewed
+
 POST '/tickets' add a given ticket object to the database in the format of:
                
                {     delivery: BOOLEAN,

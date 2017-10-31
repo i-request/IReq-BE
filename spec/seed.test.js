@@ -39,14 +39,14 @@ var tixtix = [
         allergens: ['meat', 'dairy', 'egg']
       }],
     additional_instructions: '',
-    user_details :[{
+    user_details :{
       id : 'e3e456y7uhtgre3456',
       user_name: "Jonathan Ward",
       email : "jonathan@forwardmarketingonline.co.uk", 
       phone_num : "01617991075", 
       user_company : "co-op", 
       user_floor : 3
-    }]
+    }
   },
   { order_num:2,
     isComplete: false,
@@ -75,14 +75,14 @@ var tixtix = [
         allergens: ['meat', 'dairy', 'egg']
       }],
     additional_instructions: '',
-    user_details :[{
+    user_details :{
       id : 'e3e456y7uhtgre3456',
-      user_name: "Jonathan Ward",
-      email : "jonathan@forwardmarketingonline.co.uk", 
-      phone_num : "01617991075", 
-      user_company : "co-op", 
-      user_floor : 3
-    }]
+      user_name: "yolo",
+      email : "NCHELP@NC.co.uk", 
+      phone_num : "0161545678", 
+      user_company : "Northcoders", 
+      user_floor : 4
+    }
   }
 ]
 

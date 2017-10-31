@@ -96,6 +96,7 @@ describe('API', () => {
                     name: 'standard coke',
                     extras:[],
                     price : 280,
+                    imgUrl:'https://www.the-sweet-life.co.uk/images/product/full/coke500ml.jpg',
                     description:'again it is just a coke',
                     inStock:true,
                     allergens:[], 

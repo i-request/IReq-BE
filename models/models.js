@@ -15,6 +15,7 @@ var ProductSchema = new Schema({
   name: String,
   extras: [String],
   price: Number,
+  imgUrl:String,
   description:String,
   inStock: Boolean,
   allergens: [String],

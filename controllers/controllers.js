@@ -115,6 +115,7 @@ function addProduct(req, res, next) {
             type: req.body.type,   
             name: req.body.name,
             extras:req.body.extras,
+            imgUrl: req.body.imgUrl,
             description:req.body.description,
             price : req.body.price,
             inStock:req.body.inStock,

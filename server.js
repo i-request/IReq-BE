@@ -127,9 +127,9 @@ function count(){
 }
 
 
-server.listen(9007, function () {
-  console.log('Server listening at port 9007');
-});
+// server.listen(9007, function () {
+//   console.log('Server listening at port 9007');
+// });
 
 
 module.exports = app;

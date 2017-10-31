@@ -15,6 +15,7 @@ describe('API', () => {
             .then(saveTestData)
             .then(data => {
                 baseData = data;
+                console.log('hey')
             })
             .catch(console.error);
     })

@@ -13,11 +13,11 @@ var optionalOptions = {
 var ProductSchema = new Schema({
   type: String,
   name: String,
-  extras: [[String]],
+  extras: [String],
   price: Number,
   description:String,
   inStock: Boolean,
-  allergens: [[String]],
+  allergens: [String],
 });
 
 var TicketSchema = new Schema(
@@ -31,7 +31,7 @@ var TicketSchema = new Schema(
     delivery: Boolean,
     order_content: [],
     additional_instructions: String,
-    user_details: []
+    user_details: Object
   });
 
 

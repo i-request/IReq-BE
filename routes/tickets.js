@@ -10,3 +10,4 @@ router.get('/archieved', getArchTickets)
 router.put('/:_id',ChangeTicketProp)
 
 module.exports = router;
+

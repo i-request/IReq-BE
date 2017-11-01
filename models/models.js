@@ -31,7 +31,7 @@ var TicketSchema = new Schema(
     delivery: Boolean,
     order_content: [],
     additional_instructions: String,
-    user_details: [[Object]]
+    user_details: Object
   });
 
 

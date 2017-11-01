@@ -13,6 +13,7 @@ var optionalOptions = {
 var ProductSchema = new Schema({
   type: String,
   name: String,
+  temperature:String,
   extras: [String],
   price: Number,
   imgUrl:String,

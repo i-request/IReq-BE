@@ -116,7 +116,7 @@ function addProduct(req, res, next) {
             name: req.body.name,
             extras:req.body.extras,
             imgUrl: req.body.imgUrl,
-            description:req.body.description,
+            temperature:req.body.temperature,
             price : req.body.price,
             inStock:req.body.inStock,
             allergens:req.body.allergens, 

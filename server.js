@@ -89,6 +89,8 @@ stripe.charges.create(toCharge, function(err, charge){
 
 function addTicket(req, res, next) {
   let n = count()
+  var userObj = Object.assign({},req.body.user_details)
+  if (!req.body.user_details){userObj = {}}
   let tix = new Ticket(
       { order_num: n,
           isComplete: false,
@@ -97,14 +99,7 @@ function addTicket(req, res, next) {
           delivery: req.body.delivery,
           order_content: req.body.order_content,
           additional_instructions: req.body.message,
-          user_details :[{
-            id : 'e3e456y7uhtgre3456',
-            user_name: "Jonathan Ward",
-            email : "jonathan@forwardmarketingonline.co.uk", 
-            phone_num : "01617991075", 
-            user_company : "co-op", 
-            user_floor : 3
-          }]
+          user_details :userObj
         }
   );
   tix.save()
@@ -119,6 +114,12 @@ function addTicket(req, res, next) {
       })
       .catch(err => next(err));
 }
+
+
+
+
+
+
 var obj = {c:2}
 function count(){
   obj.c = obj.c + 1
@@ -127,9 +128,9 @@ function count(){
 }
 
 
-// server.listen(9007, function () {
-//   console.log('Server listening at port 9007');
-// });
+server.listen(9007, function () {
+  console.log('Server listening at port 9007');
+});
 
 
 module.exports = app;

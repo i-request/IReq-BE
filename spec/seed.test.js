@@ -26,6 +26,7 @@ var tixtix = [
         name: "super hot dog",
         extras: ['cheese'],
         price: 700,
+        quantity:1,
         inStock: true,
         allergens: ['meat', 'dairy', 'egg']
       },
@@ -34,6 +35,7 @@ var tixtix = [
         type: "food",
         name: "ham and cheese panini",
         extras: [],
+        quantity:1,
         price: 550,
         inStock: true,
         allergens: ['meat', 'dairy', 'egg']
@@ -61,6 +63,7 @@ var tixtix = [
         extras: ['cheese'],
         description:'hey yo was up',
         price: 500,
+        quantity:1,
         inStock: true,
         allergens: ['meat', 'dairy', 'egg']
       },
@@ -71,6 +74,7 @@ var tixtix = [
         description:'hey',
         extras: [],
         price: 550,
+        quantity:1,
         inStock: true,
         allergens: ['meat', 'dairy', 'egg']
       }],

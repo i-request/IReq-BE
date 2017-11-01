@@ -16,7 +16,6 @@ var ProductSchema = new Schema({
   extras: [String],
   price: Number,
   imgUrl:String,
-  description:String,
   inStock: Boolean,
   allergens: [String],
 });
@@ -32,7 +31,7 @@ var TicketSchema = new Schema(
     delivery: Boolean,
     order_content: [],
     additional_instructions: String,
-    user_details: Object
+    user_details: [[Object]]
   });
 
 

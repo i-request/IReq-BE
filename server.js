@@ -1,5 +1,5 @@
 if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
-const PORT = process.env.NODE_ENV;
+const {PORT} = process.env
 
 
 var db ='mongodb://request:banana@ds042417.mlab.com:42417/i-req-mongod'

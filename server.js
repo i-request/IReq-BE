@@ -24,7 +24,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
 io.on('connection', function (socket) {
-  socket.emit('introduction', 'hello from 9007');
+  socket.emit('introduction', 'hello from heroku');
  
 });
 

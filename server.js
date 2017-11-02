@@ -1,13 +1,11 @@
 if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
-const PORT = process.env.NODE_ENV
-db ='mongodb://request:banana@ds042417.mlab.com:42417/i-req-mongod';
+const PORT = process.env.NODE_ENV;
 
 
-
+var db ='mongodb://request:banana@ds042417.mlab.com:42417/i-req-mongod'
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var config = require('./config');
-var db = config.DB[process.env.NODE_ENV] || process.env.DB;
 mongoose.Promise = Promise;
 var ticketsRouter = require('./routes/tickets')
 var productsRouter = require('./routes/products')
@@ -134,7 +132,7 @@ function count(){
 var port = PORT || 9007
 
 server.listen(port, function () {
-  console.log('Server listening at port 9007');
+  console.log(`Server listening at port ${port} `);
 });
 
 

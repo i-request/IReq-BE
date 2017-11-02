@@ -1,30 +1,59 @@
+// https://globalassets.starbucks.com/assets/1ba88037116d4234807bce3ee442900e.jpg
+// FLAT WHITE
+// https://globalassets.starbucks.com/assets/f6c298b781144d9d9042bc05f659dc70.jpg
+// LATTE
+// https://globalassets.starbucks.com/assets/903b434ac0914483932d006e02baeaa3.jpg
+// MOCHA
+// https://globalassets.starbucks.com/assets/3f3c928b6db142999b4a8f2b0671afb0.jpg
+// CAPPACCUINO
+// https://globalassets.starbucks.com/assets/02e313dd98204b7380730e96f8d50c38.jpg
+// AMERICANO
+// https://globalassets.starbucks.com/assets/5d069b310b7d47dda849e3b8d9a4e13f.jpg
+// ESPRESSO
+// https://globalassets.starbucks.com/assets/39d21421a80045e482b5484ea0d7db4c.jpg
+// Espresso Macchiato
+// https://globalassets.starbucks.com/assets/f24b6591ed5049c0b75ce1d0f091f1a1.jpg
+// cartado
+// https://globalassets.starbucks.com/assets/f1eab53bb2384879800af1d6172fe007.jpg
+// Iced Caffè Americano
+// https://globalassets.starbucks.com/assets/a1d9561814234844936556543f6961bc.jpg
+// Caramel Macchiato
+// https://globalassets.starbucks.com/assets/4f31501d7e8f4fc48925cfe1ab464bfe.jpg
+// Iced Caramel Macchiato
+// https://globalassets.starbucks.com/assets/ff7e47cda2fa406d9a65b36f70778d52.jpg
+// Iced Caffè Mocha
+// https://globalassets.starbucks.com/assets/1ce1d535bc804dc3b116a8a3b5fef02e.jpg
+// Iced White Chocolate Mocha
+// https://globalassets.starbucks.com/assets/2694ab61375947a58f50fd01a2734274.png
+// Iced Caffè Latte
+
+
+
+
 var products = [{
-    type: 'hot drink',
-    name: 'small black coffee',
+    type: 'drink',
+    name: 'flat white',
     price: 199,
     temperature:'hot',
-    description: 'this is a coffee',
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',
+    imgUrl:'https://globalassets.starbucks.com/assets/1ba88037116d4234807bce3ee442900e.jpg',
     inStock: true,
-    allergens: [],
-    extras: ['milk']
-},
-{
-    type: 'hot drink',
-    name: 'large black coffee',
-    description: 'this is also a coffee',
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',
-    price: 299,
-    temperature:'hot',
-    inStock: true,
-    allergens: [],
-    extras: ['milk']
+    allergens: ['dairy'],
+    extras: []
 },
 {
     type: 'drink',
-    name: 'standard coke',
-    description: 'it is just a coke',
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',
+    name: 'latte',
+    imgUrl:'https://globalassets.starbucks.com/assets/f6c298b781144d9d9042bc05f659dc70.jpg',
+    price: 299,
+    temperature:'hot',
+    inStock: true,
+    allergens: ['dairy'],
+    extras: []
+},
+{
+    type: 'drink',
+    name: 'mocha',
+    imgUrl:'https://globalassets.starbucks.com/assets/903b434ac0914483932d006e02baeaa3.jpg',
     price: 210,
     temperature:'hot',
     inStock: true,
@@ -33,136 +62,112 @@ var products = [{
 },
 {
     type: 'drink',
-    name: 'large coke',
+    name: 'cappuccino',
     price: 319,
     temperature:'hot',
-    description: 'again it is just a coke',
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',
+    imgUrl:'https://globalassets.starbucks.com/assets/3f3c928b6db142999b4a8f2b0671afb0.jpg',
     inStock: true,
     allergens: [],
     extras: []
 },
 {
-    type: 'hot drink',
-    name: 'large latte',
-    description: 'coffee again but this time with milk',
+    type: 'drink',
+    name: 'americano',
     price: 299,
     temperature:'hot',
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',
+    imgUrl:'https://globalassets.starbucks.com/assets/02e313dd98204b7380730e96f8d50c38.jpg',
     inStock: true,
-    allergens: ['dairy'],
+    allergens: [],
     extras: []
-},
-{
-    type: 'hot drink',
-    name: 'small latte',
-    description: 'smaller latte',
-    price: 210,
-    temperature:'hot',
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',
-    inStock: true,
-    allergens: ['dairy'],
-    extras: []
-},
-{
-    type: 'hot drink',
-    name: 'large cappuccino',
-    description: 'another drink with coffee',
-    price: 299,
-    temperature:'hot',
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',
-    inStock: true,
-    allergens: ['dairy'],
-    extras: []
-},
-{
-    type: 'hot drink',
-    name: 'small cappuccino',
-    description: 'the name is hard to spell',
-    temperature:'hot',
-    price: 210,
-    inStock: true,
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',
-    allergens: ['dairy'],
-    extras: []
-},
-{
-    type: 'hot drink',
-    name: 'large mocha',
-    description: 'coffee with extra choclate and syrup',
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',
-    price: 299,
-    temperature:'hot',
-    inStock: true,
-    allergens: ['dairy'],
-    extras: []
-},
-{
-    type: 'hot drink',
-    name: 'small mocha',
-    description: 'mocha chai',
-    price: 210,
-    temperature:'hot',
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',
-    inStock: true,
-    allergens: ['dairy'],
-    extras: []
-},
-{
-    type: 'hot drink',
-    name: 'large hot chocloate',
-    description: 'hot chocloate',
-    price: 299,
-    temperature:'hot',
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',    
-    allergens: ['dairy'],
-    extras: ['cream']
-},
-{
-    type: 'hot drink',
-    name: 'small hot choclate',
-    description: 'another choclate based drink',
-    price: 210,
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',    
-    inStock: true,
-    temperature:'hot',
-    allergens: ['dairy'],
-    extras: ['cream']
 },
 {
     type: 'drink',
     name: 'esspresso',
-    description: 'mini coffee',
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',
+    description: 'smaller latte',
     price: 210,
     temperature:'hot',
+    imgUrl:'https://globalassets.starbucks.com/assets/5d069b310b7d47dda849e3b8d9a4e13f.jpg',
     inStock: true,
     allergens: [],
     extras: []
 },
 {
     type: 'drink',
-    name: 'Trump Ice Water',
-    description: 'mineral water by donald trump',
-    price: 490,
-    imgUrl:'http://i.dailymail.co.uk/i/pix/2016/07/28/17/36AC085300000578-3713052-image-m-63_1469722689630.jpg',
-    inStock: true,
+    name: 'cartado',
+    price: 299,
     temperature:'hot',
-    allergens: [],
+    imgUrl:'https://globalassets.starbucks.com/assets/f24b6591ed5049c0b75ce1d0f091f1a1.jpg',
+    inStock: true,
+    allergens: ['dairy'],
+    extras: []
+},
+{
+    type: 'drink',
+    name: 'Iced Caffè Americano',
+    temperature:'cold',
+    price: 210,
+    inStock: true,
+    imgUrl:'https://globalassets.starbucks.com/assets/f1eab53bb2384879800af1d6172fe007.jpg',
+    allergens: ['dairy'],
+    extras: []
+},
+{
+    type: 'drink',
+    name: 'Caramel Macchiato',
+    imgUrl:'https://globalassets.starbucks.com/assets/a1d9561814234844936556543f6961bc.jpg',
+    price: 299,
+    temperature:'cold',
+    inStock: true,
+    allergens: ['dairy'],
+    extras: []
+},
+{
+    type: 'drink',
+    name: 'Iced Caffè Latte',
+    price: 210,
+    temperature:'cold',
+    imgUrl:'https:globalassets.starbucks.com/assets/2694ab61375947a58f50fd01a2734274.png',
+    inStock: true,
+    allergens: ['dairy'],
     extras: []
 },
 {
     type: 'food',
-    name: 'ham and cheese toastie',
-    description: 'standard ham and cheese sandwich served with chips',
+    name: 'Ham & Cheddar Croissant',
     price: 600,
-    imgUrl:'https://www.peets.com/media/catalog/product/cache/2/image/600x/9df78eab33525d08d6e5fb8d27136e95/1/7/17BRD_BEV_03_CaffeMocha_FA_LARGE.png',
+    imgUrl:'https://globalassets.starbucks.com/assets/aa389f141d6e4da6860988c75cf96307.jpg',
     inStock: true,
     temperature:'hot',
+    allergens: ['dairy', 'gluten'],
+    extras: []
+},
+{
+    type: 'food',
+    name: 'All day brealfast',
+    price: 600,
+    imgUrl:'https://globalassets.starbucks.com/assets/7d09a00d5d0d4c3d9ab0ad7da6af8aea.jpg',
+    inStock: true,
+    temperature:'hot',
+    allergens: ['meat', 'dairy', 'gluten'],
+    extras: ['tomato sauce']
+},
+{
+    type: 'food',
+    name: 'egg mayo sanwich',
+    price: 600,
+    imgUrl:'https://globalassets.starbucks.com/assets/df912e3496084d2eb1d1ff39c97b05ce.jpg',
+    inStock: true,
+    temperature:'cold',
     allergens: ['meat', 'dairy', 'gluten'],
     extras: ['tomato sauce']
 }
 
 ]
+
+
+// https://globalassets.starbucks.com/assets/aa389f141d6e4da6860988c75cf96307.jpg
+// Ham & Cheddar Croissant
+// 
+// All Day Breakfast
 
 module.exports = products

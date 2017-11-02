@@ -1,5 +1,9 @@
 if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
-if(process.env.NODE_ENV !== 'test'){}
+const PORT = process.env.NODE_ENV
+db ='mongodb://request:banana@ds042417.mlab.com:42417/i-req-mongod';
+
+
+
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var config = require('./config');
@@ -127,9 +131,9 @@ function count(){
   return obj.c
   
 }
+var port = PORT || 9007
 
-
-server.listen(9007, function () {
+server.listen(port, function () {
   console.log('Server listening at port 9007');
 });
 

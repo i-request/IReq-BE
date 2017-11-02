@@ -1,4 +1,5 @@
 if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
+if(process.env.NODE_ENV !== 'test'){}
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var config = require('./config');

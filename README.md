@@ -1,6 +1,6 @@
 # IReqest-BackEnd
 
-IRequest is a final project for the Northcoders bootccamp, it is a order a pay app designed to be used for offices to provide a food and drink delivery service for any local cafe/resturaunt. This is the Server for the irequest project. It manages the cafe's products as well at the orders to that cafe, made by customers.
+IRequest is a final project for the Northcoders full-time bootcamp, it is a order a pay app designed to be used for offices to provide a food and drink delivery service for any local cafe/resturaunt. This is the Server for the irequest project. It manages the cafe's products as well at the orders to that cafe, made by customers.
 
 ## Getting Started
 

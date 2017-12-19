@@ -83,16 +83,23 @@ POST '/products' adds a given product object to the database in the format of:
 ## Built With
 
 express.js https://github.com/expressjs
+
 stripe.js for node https://github.com/stripe/stripe-node
+
 mongoose with hmongod version: 3.4.9 (MMAPv1) https://github.com/Automattic/mongoose
+
 socket.io https://github.com/socketio/socket.io
 
 ## Authors
 
 Daniel King https://github.com/orgs/i-request/people/d-king27
+
 Jonathan Ward https://github.com/orgs/i-request/people/jonnyw17
+
 Keith Pryce https://github.com/orgs/i-request/people/pokerdice
+
 Diego Partipilo https://github.com/orgs/i-request/people/Dpartipilo
+
 
 ## Acknowledgments
 
